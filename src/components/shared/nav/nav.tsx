@@ -33,10 +33,10 @@ export default function Nav(props: Props) {
         <Toolbar style={{color: 'black', display: "flex", justifyContent:'space-between'}}>
           <img
             src={`/src/assets/avatar/helmet.png`}
-            style={{width: '30px', height: '30px'}}
+            style={{width: '25px', height: '50px'}}
             loading="lazy"
           />
-          <Button variant="outlined" sx={{ mt: 1, mb: 1.5 }}>
+          <Button variant="outlined" sx={{ mt: 1, mb: 1.5, border: '1px solid #c3c1c1', color: 'black'}}>
             sign out
           </Button>
         </Toolbar>

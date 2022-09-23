@@ -1,9 +1,11 @@
 import * as React from 'react'
+import ItemTable from "../../elements/itemTable/itemTable";
+import {products} from "../../data/products";
 
 export default function Products() {
   return (
     <div>
-      <h1>Welcome to products</h1>
+      <ItemTable data={products}/>
     </div>
   )
 }

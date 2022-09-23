@@ -1,30 +1,19 @@
 import * as React from 'react'
-import Toolbar from "@mui/material/Toolbar";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import {Avatar} from "@mui/material";
 import { Link } from 'react-router-dom'
 import {analysis, ecommerce, settings} from "./menuList";
 import './menuItems.css'
+import User from "./user/user";
 
 export default function MenuItems() {
   return (
     <div>
-      <Toolbar >
-        <div
-          className='user'>
-          <Avatar sx={{ width: 40, height: 40 }} src={`/src/assets/avatar/avatar_0.png`}/>
-          <label
-            className={'user-name'}>
-            Rahat H.
-          </label>
-        </div>
-      </Toolbar>
-
+      <User/>
       <Divider />
 
       <List>{analysis.map((item, idx) => {

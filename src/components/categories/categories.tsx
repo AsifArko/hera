@@ -1,9 +1,7 @@
 import * as React from 'react'
+import ItemTable from "../../elements/itemTable/itemTable";
+import {categories} from "../../data/categories";
 
 export default function Categories() {
-  return (
-    <div>
-      <h1>Welcome to categories</h1>
-    </div>
-  )
+  return <ItemTable data={categories}/>
 }

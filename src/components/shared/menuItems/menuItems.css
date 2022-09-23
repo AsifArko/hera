@@ -1,0 +1,21 @@
+.user {
+    display: flex;
+    flex: 2;
+}
+
+.user-name {
+    margin: 8px;
+    padding-left: 10px;
+    font-weight: bold;
+    color: #585858;
+}
+
+.list-item-button {
+    display: flex;
+    padding-top: 4px;
+}
+
+.nav-icon {
+    margin: 0;
+    min-width: 50px;
+}

@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Character from "../../elements/character/character";
 
 const theme = createTheme({
   palette: {
@@ -36,11 +37,7 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
-          <img
-            src={`/src/assets/avatar/avatar_1.png`}
-            style={{width: '400px'}}
-            loading="lazy"
-          />
+          <Character/>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 0 }}>
             <TextField
               margin="dense"

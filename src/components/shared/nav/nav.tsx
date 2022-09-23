@@ -5,6 +5,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import MenuItems  from "../menuItems/menuItems";
+import Button from "@mui/material/Button";
+import "./nav.css";
 
 const drawerWidth = 240;
 
@@ -16,35 +18,31 @@ interface Props {
   window?: () => Window;
 }
 
-export default function Menu(props: Props) {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
+export default function Nav(props: Props) {
   const drawer = MenuItems()
 
-  const container = window !== undefined ? () => window().document.body : undefined;
-
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex'}}>
       <CssBaseline />
       <AppBar
         color={"inherit"}
         position="fixed"
+        elevation={0}
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
         }}
       >
-        <Toolbar style={{paddingTop: '5px'}}>
+        <Toolbar style={{color: 'black', display: "flex", justifyContent:'space-between'}}>
           <img
-            src={`/src/assets/avatar/hera-1.png`}
-            style={{width: '48px', height: '48px'}}
+            src={`/src/assets/avatar/helmet.png`}
+            style={{width: '30px', height: '30px'}}
             loading="lazy"
           />
+          <Button variant="outlined" sx={{ mt: 1, mb: 1.5 }}>
+            sign out
+          </Button>
         </Toolbar>
       </AppBar>
       <Box

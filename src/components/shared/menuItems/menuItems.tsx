@@ -6,154 +6,83 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import PersonIcon from "@mui/icons-material/Person";
-import HomeIcon from '@mui/icons-material/Home';
-import Diversity3Icon from '@mui/icons-material/Diversity3';
-import InventoryIcon from '@mui/icons-material/Inventory';
-import BallotIcon from '@mui/icons-material/Ballot';
-import CategoryIcon from '@mui/icons-material/Category';
-import ViewListIcon from '@mui/icons-material/ViewList';
-import CreditCardIcon from '@mui/icons-material/CreditCard';
-import SettingsIcon from '@mui/icons-material/Settings';
-import InsertChartOutlinedSharpIcon from '@mui/icons-material/InsertChartOutlinedSharp';
-import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
-import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-import HailIcon from '@mui/icons-material/Hail';
+import {Avatar} from "@mui/material";
+import { Link } from 'react-router-dom'
+import {analysis, ecommerce, settings} from "./menuList";
+import './menuItems.css'
 
 export default function MenuItems() {
   return (
     <div>
-      <Toolbar />
+      <Toolbar >
+        <div
+          className='user'>
+          <Avatar sx={{ width: 40, height: 40 }} src={`/src/assets/avatar/avatar_0.png`}/>
+          <label
+            className={'user-name'}>
+            Rahat H.
+          </label>
+        </div>
+      </Toolbar>
+
       <Divider />
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="/">
-            <ListItemIcon>
-              <HomeIcon/>
-            </ListItemIcon>
-            <ListItemText primary={"Dashboard"} />
-          </ListItemButton>
-        </ListItem>
 
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="/profile">
-            <ListItemIcon>
-              <PersonIcon/>
-            </ListItemIcon>
-            <ListItemText primary={"Profile"} />
-          </ListItemButton>
-        </ListItem>
+      <List>{analysis.map((item, idx) => {
+        return (
+          <Link to={item.path} key={`analysis:${idx}`}>
+            <ListItem disablePadding>
+              <ListItemButton alignItems={'flex-start'}>
+                  <div className={'list-item-button'}>
+                    <ListItemIcon className='nav-icon' style={{margin: '0px', minWidth: '50px'}}>
+                      {item.component}
+                    </ListItemIcon>
+                    <ListItemText primary={item.label} style={{marginTop: '1.5px', color: '#4a4949'}}/>
+                  </div>
+                </ListItemButton>
+            </ListItem>
+          </Link>
+        )
+      })}</List>
 
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="/sales">
-            <ListItemIcon>
-              <BallotIcon/>
-            </ListItemIcon>
-            <ListItemText primary={"Sales"} />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton component="a" href={"/inventory"}>
-            <ListItemIcon>
-              <InventoryIcon/>
-            </ListItemIcon>
-            <ListItemText primary={"Inventory"} />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="/customers">
-            <ListItemIcon>
-              <Diversity3Icon/>
-            </ListItemIcon>
-            <ListItemText primary={"Customers"} />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="/statistics">
-            <ListItemIcon>
-              <InsertChartOutlinedSharpIcon/>
-            </ListItemIcon>
-            <ListItemText primary={"Statistics"} />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="/investors">
-            <ListItemIcon>
-              <HailIcon/>
-            </ListItemIcon>
-            <ListItemText primary={"Investors"} />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="/investments">
-            <ListItemIcon>
-              <BusinessCenterIcon/>
-            </ListItemIcon>
-            <ListItemText primary={"Investments"} />
-          </ListItemButton>
-        </ListItem>
-
-      </List>
       <Divider />
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="/orders">
-            <ListItemIcon>
-              <ViewListIcon/>
-            </ListItemIcon>
-            <ListItemText primary={"Orders"} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton component={"a"} href={'/products'}>
-            <ListItemIcon>
-              <FormatListBulletedIcon/>
-            </ListItemIcon>
-            <ListItemText primary={"Products"} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="/categories">
-            <ListItemIcon>
-              <CategoryIcon/>
-            </ListItemIcon>
-            <ListItemText primary={"Categories"} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="/payments">
-            <ListItemIcon>
-              <CreditCardIcon/>
-            </ListItemIcon>
-            <ListItemText primary={"Payments"} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="/reviews">
-            <ListItemIcon>
-              <RateReviewOutlinedIcon/>
-            </ListItemIcon>
-            <ListItemText primary={"Reviews"} />
-          </ListItemButton>
-        </ListItem>
-      </List>
+
+      <List>{ecommerce.map((item, idx) => {
+          return (
+            <Link to={item.path} key={`ecom:${idx}`}>
+              <ListItem disablePadding>
+                  <ListItemButton alignItems={'flex-start'}>
+                    <div className={'list-item-button'}>
+
+                    <ListItemIcon style={{margin: '0px', minWidth: '50px'}}>
+                      {item.component}
+                    </ListItemIcon>
+                    <ListItemText primary={item.label} style={{marginTop: '1.5px', color: '#4a4949'}}/>
+                    </div>
+                  </ListItemButton>
+              </ListItem>
+            </Link>
+          )
+        })}</List>
+
       <Divider />
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton component="a" href="/settings">
-            <ListItemIcon>
-              <SettingsIcon/>
-            </ListItemIcon>
-            <ListItemText primary={"Settings"} />
-          </ListItemButton>
-        </ListItem>
-      </List>
+
+      <List>{settings.map((item, idx) => {
+          return (
+            <Link to={item.path} key={`settings:${idx}`}>
+              <ListItem disablePadding>
+                  <ListItemButton alignItems={'flex-start'}>
+                    <div className={'list-item-button'}>
+
+                    <ListItemIcon style={{margin: '0px', minWidth: '50px'}}>
+                      {item.component}
+                    </ListItemIcon>
+                    <ListItemText primary={item.label} style={{marginTop: '1.5px', color: '#4a4949'}} />
+                    </div>
+                  </ListItemButton>
+              </ListItem>
+            </Link>
+          )
+      })}</List>
     </div>
   )
 }

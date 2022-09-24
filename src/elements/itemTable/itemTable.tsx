@@ -11,15 +11,15 @@ const ItemTable = (props: Props) => {
   const data = props.data;
 
   const keys = Object.keys(data? data[0]: [])
-  const headers = keys.map(header => capitalize(processTableHeader(header)))
+  const headers = keys.map(header => processTableHeader(header))
   return <>
     <TableContainer>
-      <Table sx={{ minWidth: 800 }} aria-label="a dense table">
+      <Table sx={{ minWidth: 800, border: '1px solid #e1e1e1;', marginTop: 3 }} aria-label="a dense table">
         <TableHead>
           <TableRow>
             {headers
               .map((header,idx) => {
-              return <TableCell key={idx} align="left">{header}</TableCell>
+              return <TableCell key={idx} align="left" style={{color: '#4e4c4c'}}><strong>{header}</strong></TableCell>
             })}
           </TableRow>
         </TableHead>

@@ -34,7 +34,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function ItemListProcessor(data: any): JSX.Element {
-  if (data && data.key === 'price') {
+  if (data && (data.key === 'buyingRate' || data.key === 'sellingRate')) {
     return <label>{`৳${data.value}`}</label>
   }
 

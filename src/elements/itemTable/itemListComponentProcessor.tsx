@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {categories} from "../../data/categories";
 import {Chip} from "@mui/material";
 import Badge from "@mui/material/Badge";
 import {styled} from "@mui/material/styles";
@@ -34,7 +33,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function ItemListProcessor(data: any): JSX.Element {
-  if (data && (data.key === 'buyingRate' || data.key === 'sellingRate')) {
+  if (data && (data.key === 'cost' || data.key === 'mrp')) {
     return <label>{`৳${data.value}`}</label>
   }
 
@@ -59,8 +58,7 @@ export default function ItemListProcessor(data: any): JSX.Element {
   }
 
   if (data && data.key === 'category') {
-    const category = categories.find(e => e.id === data.value)
-    return <Chip clickable={true} label={category ? category.name : ''} />
+    return <Chip clickable={true} label={data.value} />
   }
   return <label>{data.value}</label>
 }

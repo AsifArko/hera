@@ -48,7 +48,7 @@ export default function User(){
         </StyledBadge>
         <label
           className={'user-name'}>
-          Rahat H.
+          Rahat
         </label>
       </div>
     </Toolbar>

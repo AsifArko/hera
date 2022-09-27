@@ -2,34 +2,49 @@ import * as React from 'react'
 import ItemTable from "../../elements/itemTable/itemTable";
 import {products} from "../../data/products";
 import Button from "@mui/material/Button";
-import {Box, TextField} from "@mui/material";
+import {Box, CircularProgress, TextField} from "@mui/material";
 import './products.css'
 import CreateProduct from "./create/create";
 import {useEffect, useState} from "react";
+import {get} from "../../utils/http";
 
 export default function Products() {
-  const [productList, setProductList] = useState(products)
+  const [productList, setProductList] = useState([])
+  const [isCreated, setIsCreated] = useState(false)
+
+  const fetchProducts = async () => {
+    const response = await get('/products')
+    if (response.status === 200) {
+      setProductList(response.data)
+    }
+  }
 
   useEffect(() => {
-  }, [productList])
+    if (productList.length === 0) {
+      fetchProducts().then()
+    }
+  }, [])
 
-  const onProductCreate = (product: any) => {
-    const ids = productList.map(e => e.id)
-    const id = Math.max(...ids)
+  useEffect(() => {
+    if (isCreated) {
+      fetchProducts().then()
+      setIsCreated(false)
+    }
+  }, [isCreated])
 
-    product.id = id + 1
-    product.createdAt = '24-11-2022'
-    product.updatedAt = '24-11-2022'
-    setProductList([...productList, product])
+  const onProductCreate = (response: any) => {
+    if (response.status === 201) {
+      setIsCreated(true)
+    }
   }
 
   return (
-    <div>
+    <div style={{width: '100%', height: '700px'}}>
       <Box>
         <CreateProduct onCreate={onProductCreate}/>
       </Box>
       <Box>
-        <div style={{display: 'flex', paddingTop: '3px'}}>
+        <div style={{display: 'flex', paddingTop: '5px'}}>
           <TextField color={'primary'} size={'small'} sx={{width: '84.55%', margin: '1px'}}/>
             <Button variant="outlined" sx={{
               mt: 1,
@@ -43,7 +58,7 @@ export default function Products() {
         </div>
       </Box>
       <Box>
-        <ItemTable data={productList}/>
+        {productList && productList.length ? <ItemTable data={productList}/>: <CircularProgress sx={{padding: '10px'}} />}
       </Box>
     </div>
   )

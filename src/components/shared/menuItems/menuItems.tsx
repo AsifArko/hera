@@ -8,12 +8,10 @@ import ListItemText from "@mui/material/ListItemText";
 import { Link } from 'react-router-dom'
 import {analysis, ecommerce, settings} from "./menuList";
 import './menuItems.css'
-import User from "./user/user";
 
 export default function MenuItems() {
   return (
     <div>
-      <User/>
       <Divider />
 
       <List>{analysis.map((item, idx) => {
